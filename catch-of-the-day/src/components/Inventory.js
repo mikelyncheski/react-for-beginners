@@ -1,9 +1,19 @@
 import React from "react";
+import AddFishForm from "./AddFishForm";
 
+/* eslint-disable react/prop-types */
 class Inventory extends React.Component {
+
+
+
 	render() {
 		return (
-			<div className="Inventory">Inventory!!</div>
+			<div className="Inventory">
+				Inventory!!
+				<AddFishForm x={this.props.age} addFish={this.props.addFish}></AddFishForm>
+				<button onClick={this.props.loadSampleFishes}>Load Samples Fishes</button>
+			</div>
+
 		);
 	}
 }

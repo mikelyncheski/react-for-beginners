@@ -9,7 +9,7 @@ const Header = ({ tagline }) => (
 			<span className="the">The</span>
 		</span>Day</h1>
 		<h3 className="tagline">
-			<span>{tagline} - V3</span>
+			<span>{tagline}</span>
 		</h3>
 	</header >
 );

@@ -2,6 +2,8 @@ import React from "react";
 import { formatPrice } from "../helpers";
 
 
+/* eslint-disable react/prop-types */
+
 class Order extends React.Component {
 
 	// A "render" function: for when there is not enough stuff to justify creating another
@@ -13,7 +15,7 @@ class Order extends React.Component {
 
 		if (!isAvailable) {
 			return (
-				<li key={key}>>
+				<li key={key}>
 					Sorry! {fish ? fish.name : "fish"} is no longer available.
 				</li>
 			);

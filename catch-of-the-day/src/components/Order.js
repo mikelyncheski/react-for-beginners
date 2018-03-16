@@ -13,6 +13,9 @@ class Order extends React.Component {
 		const count = this.props.order[key];
 		const isAvailable = fish && fish.status === "available";
 
+		// Situation where order is retrieved from local storage before the fish are loaded from Firebase.
+		if (!fish) return null;
+
 		if (!isAvailable) {
 			return (
 				<li key={key}>
@@ -31,7 +34,7 @@ class Order extends React.Component {
 
 	render() {
 		const orderIds = Object.keys(this.props.order);
-		const total = orderIds.reduce((prevTotal, key) => {
+		let total = orderIds.reduce((prevTotal, key) => {
 			const fish = this.props.fishes[key];
 			const count = this.props.order[key];
 			const isAvailable = fish && fish.status === "available";

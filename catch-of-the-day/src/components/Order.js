@@ -1,14 +1,12 @@
 import React from "react";
 import { formatPrice } from "../helpers";
 
-
 /* eslint-disable react/prop-types */
 
 class Order extends React.Component {
-
 	// A "render" function: for when there is not enough stuff to justify creating another
 	// component but enough clutter not to embed in the render method.
-	renderOrder = (key) => {
+	renderOrder = key => {
 		const fish = this.props.fishes[key];
 		const count = this.props.order[key];
 		const isAvailable = fish && fish.status === "available";
@@ -30,7 +28,7 @@ class Order extends React.Component {
 				{formatPrice(count * fish.price)}
 			</li>
 		);
-	}
+	};
 
 	render() {
 		const orderIds = Object.keys(this.props.order);
@@ -39,7 +37,7 @@ class Order extends React.Component {
 			const count = this.props.order[key];
 			const isAvailable = fish && fish.status === "available";
 			if (isAvailable) {
-				return prevTotal + (count * fish.price);
+				return prevTotal + count * fish.price;
 			}
 			return prevTotal;
 		}, 0);
@@ -47,9 +45,7 @@ class Order extends React.Component {
 		return (
 			<div className="order-wrap">
 				<h2>Order</h2>
-				<ul className="order">
-					{orderIds.map(key => this.renderOrder(key))}
-				</ul>
+				<ul className="order">{orderIds.map(key => this.renderOrder(key))}</ul>
 				<div className="total">
 					<strong>{formatPrice(total)}</strong>
 				</div>

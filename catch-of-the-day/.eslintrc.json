@@ -4,10 +4,7 @@
 		"es6": true
 	},
 	"parser": "babel-eslint",
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended"
-	],
+	"extends": ["react-app"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"experimentalObjectRestSpread": true,
@@ -15,25 +12,8 @@
 		},
 		"sourceType": "module"
 	},
-	"plugins": [
-		"react"
-	],
+	"plugins": ["react"],
 	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		],
-		"linebreak-style": [
-			"error",
-			"windows"
-		],
-		"quotes": [
-			"error",
-			"double"
-		],
-		"semi": [
-			"error",
-			"always"
-		]
+		"prettier/prettier": "error"
 	}
 }

@@ -4,7 +4,6 @@ import StorePicker from "./StorePicker";
 import App from "./App";
 import NotFound from "./NotFound";
 
-
 const Router = () => (
 	<BrowserRouter>
 		<Switch>

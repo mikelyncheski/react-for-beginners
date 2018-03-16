@@ -1,7 +1,6 @@
 import React from "react";
 import { getFunName } from "../helpers";
 
-
 /* eslint-disable react/prop-types */
 
 class StorePicker extends React.Component {
@@ -28,17 +27,15 @@ class StorePicker extends React.Component {
 	// Added 	"parser": "babel-eslint", to eslint config to fix error message
 	myInput = React.createRef();
 
-	goToStore = (event) => {
+	goToStore = event => {
 		// Stop the form from submitting
 		event.preventDefault();
 		// Get the text from the input using refs (later use state)
-		const storeName = this.myInput.value.value;   // "this" works here because goToStore is a property just like myInput
+		const storeName = this.myInput.value.value; // "this" works here because goToStore is a property just like myInput
 		// Change the page to /store/whatever-they-entered; We can use this methodology
 		// to access the push functions because StorePicker is a child of Router.
 		this.props.history.push(`/store/${storeName}`);
-	}
-
-
+	};
 
 	// componentDidMount() {		// After page is drawn
 	// 	console.log("MOUNTED");
@@ -48,13 +45,19 @@ class StorePicker extends React.Component {
 	// }
 
 	render() {
-		return (   // Parens needed if you want this formatted like this
-			<form className="store-selector" onSubmit={this.goToStore} >
+		return (
+			// Parens needed if you want this formatted like this
+			<form className="store-selector" onSubmit={this.goToStore}>
 				<h2>Please Enter a store</h2>
 				{/* With parens the function runs on page load! */}
 				{/* <button onClick={this.handleClick}>Click it good</button> */}
-				<input type="text" required placeholder="Store Name" defaultValue={getFunName()}
-					ref={this.myInput} />
+				<input
+					type="text"
+					required
+					placeholder="Store Name"
+					defaultValue={getFunName()}
+					ref={this.myInput}
+				/>
 				<button type="submit">Visit Store &rarr;</button>
 			</form>
 		);

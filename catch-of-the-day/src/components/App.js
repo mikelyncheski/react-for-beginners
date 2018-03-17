@@ -30,10 +30,7 @@ class App extends React.Component {
 
 	componentDidUpdate() {
 		// Does not happen the first time
-		localStorage.setItem(
-			this.props.match.params.storeId,
-			JSON.stringify(this.state.order)
-		);
+		localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
 	}
 
 	componentWillUnmount() {
@@ -45,6 +42,16 @@ class App extends React.Component {
 		const fishes = { ...this.state.fishes };
 		// Add our new fish
 		fishes[`fish${Date.now()}`] = fish;
+		// Update the state
+		this.setState({ fishes });
+	};
+
+	updateFish = (key, fish) => {
+		console.log("hey", key, fish);
+		// Take a copy of the existing state using object spread
+		const fishes = { ...this.state.fishes };
+		// Update that fish
+		fishes[key] = fish;
 		// Update the state
 		this.setState({ fishes });
 	};
@@ -68,6 +75,7 @@ class App extends React.Component {
 				<div className="menu">
 					<Header tagline="Fresh Seafood Market" />
 					<ul className="fishes">
+						{/* Turn into an array so we can map over it */}
 						{Object.keys(this.state.fishes).map(key => (
 							<Fish
 								key={key}
@@ -81,6 +89,7 @@ class App extends React.Component {
 				<Order fishes={this.state.fishes} order={this.state.order} />
 				<Inventory
 					addFish={this.addFish}
+					updateFish={this.updateFish}
 					loadSampleFishes={this.loadSampleFishes}
 					fishes={this.state.fishes}
 				/>

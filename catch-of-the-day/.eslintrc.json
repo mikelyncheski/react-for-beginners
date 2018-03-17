@@ -4,7 +4,12 @@
 		"es6": true
 	},
 	"parser": "babel-eslint",
-	"extends": ["react-app"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"prettier",
+		"prettier/react"
+	],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"experimentalObjectRestSpread": true,
@@ -12,7 +17,10 @@
 		},
 		"sourceType": "module"
 	},
-	"plugins": ["react"],
+	"plugins": [
+		"react",
+		"prettier"
+	],
 	"rules": {
 		"prettier/prettier": "error"
 	}

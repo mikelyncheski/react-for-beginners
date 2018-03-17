@@ -47,11 +47,19 @@ class App extends React.Component {
 	};
 
 	updateFish = (key, fish) => {
-		console.log("hey", key, fish);
 		// Take a copy of the existing state using object spread
 		const fishes = { ...this.state.fishes };
 		// Update that fish
 		fishes[key] = fish;
+		// Update the state
+		this.setState({ fishes });
+	};
+
+	deleteFish = key => {
+		// Take a copy of state
+		const fishes = { ...this.state.fishes };
+		// Need to set it to null so firebase picks up the change
+		fishes[key] = null;
 		// Update the state
 		this.setState({ fishes });
 	};
@@ -65,6 +73,15 @@ class App extends React.Component {
 		const order = { ...this.state.order };
 		// Either add to the order or update the number in our order.
 		order[fishKey] = order[fishKey] + 1 || 1;
+		// Update the state
+		this.setState({ order });
+	};
+
+	deleteFromOrder = fishKey => {
+		// Take a copy of state
+		const order = { ...this.state.order };
+		// Since we are not mirroring this to firebase we can just delete the line item.
+		delete order[fishKey];
 		// Update the state
 		this.setState({ order });
 	};
@@ -86,10 +103,15 @@ class App extends React.Component {
 						))}
 					</ul>
 				</div>
-				<Order fishes={this.state.fishes} order={this.state.order} />
+				<Order
+					fishes={this.state.fishes}
+					order={this.state.order}
+					deleteFromOrder={this.deleteFromOrder}
+				/>
 				<Inventory
 					addFish={this.addFish}
 					updateFish={this.updateFish}
+					deleteFish={this.deleteFish}
 					loadSampleFishes={this.loadSampleFishes}
 					fishes={this.state.fishes}
 				/>

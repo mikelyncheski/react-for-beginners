@@ -15,17 +15,14 @@ class Order extends React.Component {
 		if (!fish) return null;
 
 		if (!isAvailable) {
-			return (
-				<li key={key}>
-					Sorry! {fish ? fish.name : "fish"} is no longer available.
-				</li>
-			);
+			return <li key={key}>Sorry! {fish ? fish.name : "fish"} is no longer available.</li>;
 		}
 
 		return (
 			<li key={key}>
 				{count} lbs {fish.name}
-				{formatPrice(count * fish.price)}
+				&nbsp;{formatPrice(count * fish.price)}
+				<button onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
 			</li>
 		);
 	};

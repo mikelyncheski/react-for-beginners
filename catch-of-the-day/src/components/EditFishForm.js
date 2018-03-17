@@ -10,6 +10,7 @@ class EditFishForm extends React.Component {
 		//updatedFish.price = parseFloat(updatedFish.price);
 		this.props.updateFish(this.props.fishKey, fish);
 	};
+
 	// price is a string
 	// avail/unavail is funky
 	// why is it not nagging me about missing proptypes??
@@ -47,6 +48,7 @@ class EditFishForm extends React.Component {
 					type="text"
 					placeholder="Image"
 				/>
+				<button onClick={() => this.props.deleteFish(this.props.fishKey)}>Remove Fish</button>
 			</div>
 		);
 	}

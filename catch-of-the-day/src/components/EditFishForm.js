@@ -1,7 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-/* eslint-disable react/prop-types */
 class EditFishForm extends React.Component {
+	static propTypes = {
+		fish: PropTypes.shape({
+			image: PropTypes.string,
+			name: PropTypes.string,
+			price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+			desc: PropTypes.string,
+			status: PropTypes.string
+		}),
+		fishKey: PropTypes.string,
+		updateFish: PropTypes.func,
+		deleteFish: PropTypes.func
+	};
+
 	handleChange = event => {
 		const fish = {
 			...this.props.fish, // Take a copy of the fish

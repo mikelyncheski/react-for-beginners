@@ -1,9 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getFunName } from "../helpers";
 
-/* eslint-disable react/prop-types */
-
 class StorePicker extends React.Component {
+	static propTypes = {
+		history: PropTypes.object
+	};
+
 	// handleClick() {
 	// 	alert("doh");
 	// }

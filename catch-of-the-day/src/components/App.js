@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
@@ -6,9 +7,11 @@ import sampleFishes from "../sample-fishes";
 import Fish from "./Fish";
 import base from "../base";
 
-/* eslint-disable react/prop-types */
-
 class App extends React.Component {
+	static propTypes = {
+		match: PropTypes.object
+	};
+
 	state = {
 		fishes: {},
 		order: {}
@@ -90,7 +93,7 @@ class App extends React.Component {
 		return (
 			<div className="catch-of-the-day">
 				<div className="menu">
-					<Header tagline="Fresh Seafood Market" />
+					<Header tagline={"Fresh Seafood Market"} />
 					<ul className="fishes">
 						{/* Turn into an array so we can map over it */}
 						{Object.keys(this.state.fishes).map(key => (

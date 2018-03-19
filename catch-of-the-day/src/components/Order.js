@@ -1,10 +1,15 @@
 import React from "react";
-import { formatPrice } from "../helpers";
+import PropTypes from "prop-types";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-
-/* eslint-disable react/prop-types */
+import { formatPrice } from "../helpers";
 
 class Order extends React.Component {
+	static propTypes = {
+		fishes: PropTypes.object,
+		order: PropTypes.object,
+		deleteFromOrder: PropTypes.func
+	};
+
 	// A "render" function: for when there is not enough stuff to justify creating another
 	// component but enough clutter not to embed in the render method.
 	renderOrder = key => {
